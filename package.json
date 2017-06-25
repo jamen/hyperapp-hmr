@@ -2,7 +2,7 @@
   "name": "hyperapp-hmr",
   "description": "Reloads your modules while preseving the app state",
   "author": "Jamen Marz (https://git.io/jamen)",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "repository": "jamen/hyperapp-hmr",
   "license": "MIT",
   "scripts": {
