@@ -1,0 +1,41 @@
+{
+  "name": "hyperapp-hmr",
+  "description": "Reloads your modules while preseving the app state",
+  "author": "Jamen Marz (https://git.io/jamen)",
+  "version": "0.0.0",
+  "repository": "jamen/hyperapp-hmr",
+  "license": "MIT",
+  "scripts": {
+    "test:browser": "echo 'Edit test/index.js to see HMR!' && budo test/index.js --live --pushstate -- -t babelify -t es2040 "
+  },
+  "keywords": [
+    "hyperapp",
+    "hyperapp-plugin",
+    "hmr",
+    "hot",
+    "module",
+    "replacement",
+    "live",
+    "reload"
+  ],
+  "dependencies": {
+    "hyperapp-persist": "^1.1.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babelify": "^7.3.0",
+    "budo": "^10.0.3",
+    "es2040": "^1.2.5",
+    "hyperapp": "^0.9.3"
+  },
+  "babel": {
+    "plugins": [
+      [
+        "transform-react-jsx",
+        {
+          "pragma": "h"
+        }
+      ]
+    ]
+  }
+}
