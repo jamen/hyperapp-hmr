@@ -2,7 +2,7 @@ var { h, app, Router } = require('hyperapp')
 var hmr = require('../')
 
 app({
-  mixins: [ Router, hmr ],
+  mixins: [ Router, hmr() ],
   state: {
     count: 0,
     input: '',

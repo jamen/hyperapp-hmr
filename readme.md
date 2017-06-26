@@ -10,8 +10,38 @@ var { h, app } = require('hyperapp')
 var hmr = require('hyperapp-hmr')
 
 app({
-  // Simply load HMR as a mixin
-  mixins: [ hmr ],
+  // Simply load HMR as a mixin, defaults to using localStorage
+  mixins: [ hmr() ],
+  
+  // The rest of your application stays unchanged, e.g. state:
+  state: { count: 0 },
+
+  // Try changing action's functionality as the app is running with HMR
+  // Then when you reload, the state is persisted and the functions are updated
+  actions: {
+    add: (state) => ({ count: state.count + 1 })
+  },
+
+  // Also change the view freely with the HMR
+  view: (state, actions) =>
+    <div class='app'>
+      <button onclick={actions.add}>Add one</button>
+      <span>Current value: {state.count}</span>
+    </div>
+})
+```
+
+> Example Webpack HMR configuration can be found at [andyrj/hyperapp-starter](https://github.com/andyrj/hyperapp-starter), further details can also be found on the (webpack documentation website)[https://webpack.js.org/guides/hot-module-replacement/#enabling-hmr]
+
+```js
+var { h, app } = require('hyperapp')
+var hmr = require('hyperapp-hmr')
+
+app({
+  // global option allows storing state to a global instead so that refesh acts as a reset
+	// and webpack hmr can be setup as done normally, if noLS is not specified state will be saved in
+	// both localStorage and window[global.name]
+  mixins: [ hmr({ global:{ name: 'state', noLS: true }}) ],
   
   // The rest of your application stays unchanged, e.g. state:
   state: { count: 0 },
